@@ -1,7 +1,14 @@
 import React from "react";
 import './Blurb.css';
 
-function Blurb({heading, subtitle, isWhite}: {heading: string, subtitle: string, isWhite: boolean}) {
+interface BlurbProps {
+    heading: string;
+    subtitle: string;
+    image: string;
+    isWhite?: boolean;
+}
+
+function Blurb({heading, subtitle, image, isWhite}: BlurbProps) {
     return (
         <div className={`container${isWhite? '-white' : ''}`}>
             <h2 className={`header${isWhite? '-white' : ''}`}>{heading}</h2>
@@ -10,9 +17,9 @@ function Blurb({heading, subtitle, isWhite}: {heading: string, subtitle: string,
                     <li>Learn more {'>'}</li>
                     <li>Buy {'>'}</li>
                 </ul>
-            <img className="image" src="/logo192.png" alt="image"/>
+            <img className="image" src={`/${image}`} alt=""/>
         </div>
     )
 }
 
-export default Blurb;
+export {Blurb};
