@@ -10,7 +10,7 @@ interface BlurbProps {
 
 function Blurb({heading, subtitle, image, isWhite}: BlurbProps) {
     return (
-        <div className={`container${isWhite? '-white' : ''}`}>
+        <div className={`box${isWhite? '-white' : ''}`}>
             <h2 className={`header${isWhite? '-white' : ''}`}>{heading}</h2>
             <p className={`subtitle${isWhite? '-white' : ''}`}>{subtitle}</p>
                 <ul className="links">

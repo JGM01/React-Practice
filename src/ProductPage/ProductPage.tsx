@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.css';
+import { Container, Row, Col, Button } from "react-bootstrap";
+import './ProductPage.css';
+
 
 class Product {
     constructor(
@@ -14,11 +18,7 @@ class Product {
     }
 
     getName() {
-        return (
-            <div>
-                {this.product_name}
-            </div>
-        );
+        return this.product_name;
     }
 
     getPrice(amt: number) {
@@ -47,17 +47,75 @@ interface ProductPageProps {
 }
 
 function ProductPage({product}: ProductPageProps) {
-
     const [orderAmt, setOrderAmt] = useState(0);
 
     return (
-        <div className="product-page-container">
-            <h1>I want {orderAmt} {product.getName()}</h1>
-            <p> That will be </p>
-            <p>{product.getPrice(orderAmt)}</p>
-            <button onClick={() => setOrderAmt(orderAmt + 1)}>Increment</button>
-            <button onClick={() => setOrderAmt(orderAmt - 1)}>Decrement</button>
-        </div>
+        <Container id='page'>
+            <Row>
+                <Col className='product-image'>
+                    <img className="product-image" src={`/${product.getImageDir()}`} alt=""/>
+                </Col>
+
+                
+                <Col className='product-customization'>
+                    <h1>{`Customize your 9-inch ${product.getName()} - Space Gray`}</h1>
+                    <ul className='tech-specs'>
+                        <li>Apple M2 Pro with 12‑core CPU, 19‑core GPU, 16‑core Neural Engine</li>
+                        <li>16GB unified memory</li>
+                        <li>1TB SSD storage</li>
+                        <li>96W USB-C Power Adapter</li>
+                        <li>14-inch Liquid Retina XDR display</li>
+                        <li>Three Thunderbolt 4 ports, HDMI port, SDXC card slot, headphone jack, MagSafe 3 port</li>
+                        <li>Backlit Magic Keyboard with Touch ID - US English</li>
+                    </ul>
+
+                    <Row className="customization-section">
+                        <h3 className="customization-label"> System on a Chip</h3>
+                        <Row className="button-section">
+                           <CustomizationButton/>
+                           <CustomizationButton/>
+                           <CustomizationButton/>
+                           <CustomizationButton/>
+                           <CustomizationButton/>
+                           <CustomizationButton/>
+                           <CustomizationButton/>
+                           <CustomizationButton/>
+                           <CustomizationButton/>
+                        </Row>
+                    </Row>
+                </Col>
+            </Row>
+
+
+            <Row className="bottom-info">
+                <Col className="delivery-info" >
+                    <Col className="in-store">
+                        check
+                    </Col>
+
+                    <Col className="order-now">
+                        check
+                    </Col>
+                </Col>
+
+                <Col className="cost-info" >
+                    ${orderAmt}
+                </Col>
+            </Row>
+        </Container>
+    );
+}
+
+function CustomizationButton() {
+    return (
+        <Button variant='outline-primary' className="customization-option">
+            <Col className="customization">
+                Apple M2 Pro with 12-core CPU, 19-core GPU, 16-core Neural Engine
+            </Col>
+            <Col className="customization-cost">
+                $5
+            </Col>
+        </Button>
     );
 }
 

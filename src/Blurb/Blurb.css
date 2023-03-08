@@ -1,10 +1,10 @@
-.container {
+.box {
     margin-bottom: 1rem;
     background: linear-gradient(#000 80%, #202020);
     position: relative;
 }
 
-.container-white{
+.box-white{
     margin-bottom: 1rem;
     background: linear-gradient(#fff 80%, #fbfbfd);
     position: relative;
